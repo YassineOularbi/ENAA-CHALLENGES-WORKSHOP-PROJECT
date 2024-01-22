@@ -3,7 +3,7 @@
 int main() {
     int N, S = 0, M = 0;
     while (N != 0){
-         printf("Entrer un nombre positif inférieur a 100 :");
+         printf("Entrer un nombre positif inferieur a 100 :");
          scanf("%d", &N);
         if (N==0)
         break;

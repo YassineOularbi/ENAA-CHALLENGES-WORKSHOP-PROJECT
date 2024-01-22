@@ -13,7 +13,7 @@ int main() {
         for(j=1 ; j<=l-i ; j++){
         printf("  ");
         }
-        for(j=1 ; j<=2i-1 ; j++){
+        for(j=1 ; j<=2*i-1 ; j++){
             printf("* ");
 
         }
@@ -24,8 +24,8 @@ int main() {
         for(j=1 ; j<=l-i ; j++){
         printf("  ");
         }
-        for(j=1 ; j<=2i-1 ; j++){
-            printf(" ");
+        for(j=1 ; j<=2*i-1 ; j++){
+            printf("* ");
 
         }
         printf("\n");

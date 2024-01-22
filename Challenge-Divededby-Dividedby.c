@@ -28,9 +28,9 @@ int main (){
     printf ("Entrer deux nombres entiers :");
     scanf ("%d %d", &Num1, &Num2);
     if (dividedby(Num1,Num2)){
-        printf ("le resultat %d des deux nombres %d et %d est premier", divededby(Num1,Num2), Num1, Num2);
+        printf ("le resultat des deux nombres %d et %d est premier", Num1, Num2);
     } else {
-        printf ("le resultat %d des deux nombres %d et %d est non premier", divededby(Num1,Num2), Num1, Num2);
+        printf ("le resultat des deux nombres %d et %d est non premier", Num1, Num2);
     }
 return 0;
 }

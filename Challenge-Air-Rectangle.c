@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    // Déclaration des variables
+    // Declaration des variables
     float Lg, Lr, A;
     // Saisie de longueur et largeur du rectangle
     printf("Entrer la longueur du rectangle :");

@@ -2,7 +2,7 @@
 #include <math.h>
 
 int main() {
-    // Déclaration des variables
+    // DÃ©claration des variables
     float B, E;
     // Saisie la base et l'exposant
     printf("Entrer la base :");

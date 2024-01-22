@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    // Déclaration des variables
+    // DÃ©claration des variables
     int A, B, C;
     // Saisie des trois entiers au clavier
     printf("Entrer le premier nombre entier:");
@@ -22,4 +22,3 @@ int main() {
     }
     return 0;
 }
-

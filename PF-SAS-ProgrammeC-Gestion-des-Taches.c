@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int Taille = 0;
 
@@ -22,34 +23,37 @@ struct Taches
     char Status_Tache[100];
 };
 
-void Ajouter(int Taille)
-{
+struct Taches Tableau_Taches[200];
 
-    struct Taches Tableau_Taches[Taille];
+int Ajouter()
+{
     for (int i = Taille; i < Taille + 1; i++)
     {
-        printf("Veuillez Entrer le nom de la Tache :");
-        scanf("%s", Tableau_Taches[i].Nom_Tache);
-        printf("Veuillez Entrer la description de la Tache :");
-        scanf("%s", Tableau_Taches[i].Description_Tache);
-        printf("Veuillez Entrer la date d'echeance et l'heure JJ/MM/YYYY - HH:");
-        scanf("%d/%d/%d - %d", &Tableau_Taches[i].date_Tache.jour, &Tableau_Taches[i].date_Tache.mois, &Tableau_Taches[i].date_Tache.annee, &Tableau_Taches[i].date_Tache.heure);
-        printf("Veuillez Entrer la priorite de la tache :");
-        scanf("%s", Tableau_Taches[i].Priorite_Tache);
-        printf("Veuillez Entrer le statut de la tache :");
-        scanf("%s", Tableau_Taches[i].Status_Tache);
+        printf("Veuillez Entrer le nom de la Tache : ");
+        getchar();
+        fgets(Tableau_Taches[Taille].Nom_Tache, sizeof(Tableau_Taches[Taille].Nom_Tache), stdin);
+        printf("Veuillez Entrer la description de la Tache : ");
+        getchar();
+        fgets(Tableau_Taches[Taille].Description_Tache, sizeof(Tableau_Taches[Taille].Description_Tache), stdin);
+        printf("Veuillez Entrer la date d'echeance et l'heure JJ / MM / YYYY - HH : ");
+        scanf("%d / %d / %d - %d", &Tableau_Taches[Taille].date_Tache.jour, &Tableau_Taches[Taille].date_Tache.mois, &Tableau_Taches[Taille].date_Tache.annee, &Tableau_Taches[Taille].date_Tache.heure);
+        printf("Veuillez Entrer la priorite de la tache : ");
+        getchar();
+        fgets(Tableau_Taches[Taille].Priorite_Tache, sizeof(Tableau_Taches[Taille].Priorite_Tache), stdin);
+        printf("Veuillez Entrer le statut de la tache : ");
+        getchar();
+        fgets(Tableau_Taches[Taille].Status_Tache, sizeof(Tableau_Taches[Taille].Status_Tache), stdin);
     }
     Taille++;
     Acceuil();
 }
 
-void Afficher(int Taille)
-{
 
-    struct Taches Tableau_Taches[Taille];
-    for (int i = Taille; i < Taille + 1; i++)
+void Afficher()
+{
+    for (int i = 0; i < Taille; i++)
     {
-        printf ("Nom de Tache : %s, Description : %s, Date d'echeance : %d/%d/%d - %dh, Priorite : %s, Statut : %s.", Tableau_Taches[i].Nom_Tache , Tableau_Taches[i].Description_Tache, Tableau_Taches[i].date_Tache.jour, Tableau_Taches[i].date_Tache.mois, Tableau_Taches[i].date_Tache.annee, Tableau_Taches[i].date_Tache.heure, Tableau_Taches[i].Priorite_Tache, Tableau_Taches[i].Status_Tache);
+        printf("Nom de Tache : %s, Description : %s, Date d'echeance : %d/%d/%d - %dh, Priorite : %s, Statut : %s.\n", Tableau_Taches[i].Nom_Tache, Tableau_Taches[i].Description_Tache, Tableau_Taches[i].date_Tache.jour, Tableau_Taches[i].date_Tache.mois, Tableau_Taches[i].date_Tache.annee, Tableau_Taches[i].date_Tache.heure, Tableau_Taches[i].Priorite_Tache, Tableau_Taches[i].Status_Tache);
     }
     Acceuil();
 }
@@ -81,11 +85,11 @@ void Welcome()
     }
 }
 
-void Acceuil()
+int Acceuil()
 {
 
     int choix_Acceuil;
-    printf("########## - OneHand - ###########\n");
+    printf("\n########## - OneHand - ###########\n");
     printf("##### - Gestion des Taches - #####\n");
     printf("                                  \n");
     printf("1- Ajouter une Tache.\n");
@@ -115,14 +119,15 @@ void Acceuil()
         printf("A bientot! vous etes hors du programme.");
         break;
     case 1:
-        Ajouter(Taille);
+        Ajouter();
         break;
     case 2:
-        Afficher(Taille);
+
         break;
     case 3:
         break;
     case 4:
+        Afficher();
         break;
     case 5:
         break;

@@ -27,6 +27,9 @@ void retirer(int CodeProduit, int Quantite){
     int res = search(CodeProduit);
     if(res == -1){
         printf("Le produit a retirer n'exist pas!");
+        Acceuil(); 
+    } else if (TableauQuantite[res]<Quantite){
+        printf("Error, La quantite a retirer plus que la quantitE disponible");
         Acceuil();
     } else {
         TableauQuantite[res]-= Quantite;

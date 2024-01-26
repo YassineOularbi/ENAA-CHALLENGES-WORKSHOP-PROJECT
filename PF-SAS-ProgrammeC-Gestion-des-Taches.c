@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int Taille = 0;
 
@@ -25,7 +26,21 @@ struct Taches
 
 struct Taches Tableau_Taches[200];
 
-int Ajouter()
+int Chercher(char Nom_Chercher[100])
+{
+
+    for (int i = 0; i < Taille; i++)
+    {
+        int resultCompare = strcmp(Tableau_Taches[i].Nom_Tache, Nom_Chercher);
+        if (resultCompare == 0)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void Ajouter()
 {
     for (int i = Taille; i < Taille + 1; i++)
     {
@@ -37,6 +52,10 @@ int Ajouter()
         fgets(Tableau_Taches[Taille].Description_Tache, sizeof(Tableau_Taches[Taille].Description_Tache), stdin);
         printf("Veuillez Entrer la date d'echeance et l'heure JJ / MM / YYYY - HH : ");
         scanf("%d / %d / %d - %d", &Tableau_Taches[Taille].date_Tache.jour, &Tableau_Taches[Taille].date_Tache.mois, &Tableau_Taches[Taille].date_Tache.annee, &Tableau_Taches[Taille].date_Tache.heure);
+        // if (Tableau_Taches[Taille].date_Tache.jour < 1 || Tableau_Taches[Taille].date_Tache.jour > 31 || Tableau_Taches[Taille].date_Tache.mois < 1 || Tableau_Taches[Taille].date_Tache.mois > 12 || Tableau_Taches[Taille].date_Tache.annee < 2024 || Tableau_Taches[Taille].date_Tache.annee > 2030 || Tableau_Taches[Taille].date_Tache.heure < 0 || Tableau_Taches[Taille].date_Tache.heure > 24 ){
+        //  printf("Veuillez Entrer une valide date  et l'heure sous forme (JJ / MM / YYYY - HH) : ");
+        // scanf("%d / %d / %d - %d", &Tableau_Taches[Taille].date_Tache.jour, &Tableau_Taches[Taille].date_Tache.mois, &Tableau_Taches[Taille].date_Tache.annee, &Tableau_Taches[Taille].date_Tache.heure);
+        // }
         printf("Veuillez Entrer la priorite de la tache : ");
         getchar();
         fgets(Tableau_Taches[Taille].Priorite_Tache, sizeof(Tableau_Taches[Taille].Priorite_Tache), stdin);
@@ -48,6 +67,64 @@ int Ajouter()
     Acceuil();
 }
 
+void Supprimer()
+{
+    char Nom_Supprimer[100];
+    printf("Entrer le nom de la tache a supprimer : ");
+    getchar();
+    fgets(Nom_Supprimer, sizeof(Nom_Supprimer), stdin);
+    int res = Chercher(Nom_Supprimer);
+    if (res == -1)
+    {
+        printf("La tache n'existe pas!");
+    }
+    else
+    {
+        for (int i = res; i < Taille; i++)
+        {
+            Tableau_Taches[i] = Tableau_Taches[i + 1];
+            Taille--;
+        }
+        printf("La suppression terminer!");
+    }
+    Acceuil();
+}
+
+void Modifier()
+{
+    char Nom_Modifier[100];
+    printf("Entrer le nom de la tache a modifier : ");
+    getchar();
+    fgets(Nom_Modifier, sizeof(Nom_Modifier), stdin);
+    int res = Chercher(Nom_Modifier);
+    if (res == -1)
+    {
+        printf("La tache n'existe pas!");
+    }
+    else
+    {
+        printf("Entrer les modification de cette tache :\n");
+        printf("Entrer la nouvelle description de la tache : ");
+
+        gets(Tableau_Taches[res].Description_Tache);
+        printf("Entrer la nouvelle date d'echeance et l'heure JJ / MM / YYYY - HH : ");
+        scanf("%d / %d / %d - %d", &Tableau_Taches[res].date_Tache.jour, &Tableau_Taches[res].date_Tache.mois, &Tableau_Taches[res].date_Tache.annee, &Tableau_Taches[res].date_Tache.heure);
+        printf("Entrer la nouvelle priorite de la tache : ");
+        getchar();
+        fgets(Tableau_Taches[res].Priorite_Tache, sizeof(Tableau_Taches[res].Priorite_Tache), stdin);
+        printf("Entrer le nouveau statut de la tache : ");
+
+        gets(Tableau_Taches[res].Status_Tache);
+    }
+    printf("La modification terminer!");
+    Acceuil();
+}
+
+void Ordonner(){
+    printf("Veuillez Entrer l'Ordre de triage :");
+    printf("1. Triage par date croissant.");
+    printf("2. Triage par date decroissant.");
+}
 
 void Afficher()
 {
@@ -122,9 +199,10 @@ int Acceuil()
         Ajouter();
         break;
     case 2:
-
+        Modifier();
         break;
     case 3:
+        Supprimer();
         break;
     case 4:
         Afficher();

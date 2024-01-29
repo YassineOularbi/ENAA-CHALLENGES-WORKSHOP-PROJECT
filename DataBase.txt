@@ -1,0 +1,6 @@
+
+	->Nom de la tache 1 : YASSINE
+ 	  -Description : PROJET ENAA
+ 	  -Date d'echeance : 12/12/2025 - 12h
+ 	  -Priorite : IMPORTANT
+ 	  -Statut : COMPLETE.

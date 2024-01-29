@@ -16,6 +16,7 @@ void Filtrage_Status();
 void Rechercher();
 int Chercher(char Nom_Chercher[100]);
 void Welcome();
+void Export_Fichier();
 
 int Taille = 0;
 
@@ -106,6 +107,8 @@ void Acceuil()
     printf("                                  \n");
     printf("\t7- Rechercher une tache.\n");
     printf("                                  \n");
+    printf("\t8- Extraire la base de donnée.\n");
+    printf("                                  \n");
     printf("\t0- Quitter le programme!\n");
     printf("                                  \n");
     printf("    ENAA, DigitalGear, OneHand, Copyright tous droits reserves.");
@@ -140,6 +143,9 @@ void Acceuil()
     case 7:
         Rechercher();
         break;
+    case 8:
+        Export_Fichier();
+        break;
     default:
         printf("\n\tVeuillez entrer un choix valide !\n");
         Acceuil();
@@ -166,7 +172,7 @@ void Ajouter()
         }
         printf("\n\tVeuillez entrer la priorite de la tache (IMPORTANT, PEU IMPORTANT, PAS IMPORTANT) : ");
         scanf(" %[^\n]s", Tableau_Taches[i].Priorite_Tache);
-        printf("\n\tVeuillez entrer le statut de la tache (FINIS, ENCOURS) : ");
+        printf("\n\tVeuillez entrer le statut de la tache (COMPLETE, INCOMPLETE) : ");
         scanf(" %[^\n]s", Tableau_Taches[i].Status_Tache);
     }
     Taille++;
@@ -226,7 +232,7 @@ void Modifier()
         }
         printf("\n\t   -La nouvelle priorite de la tache (IMPORTANT, PEU IMPORTANT, PAS IMPORTANT) : ");
         scanf(" %[^\n]s", Tableau_Taches[res].Priorite_Tache);
-        printf("\n\t   -Le nouveau statut de la tache (FINIS, ENCOURS) : ");
+        printf("\n\t   -Le nouveau statut de la tache (COMPLETE, INCOMPLET) : ");
         scanf(" %[^\n]s", Tableau_Taches[res].Status_Tache);
         printf("\n");
         printf("\n\tL'operation de modification est en cours d'execution...");
@@ -362,7 +368,7 @@ void Filtrage_Status()
     int j = 0;
     char Choix_Filtrage[100];
     struct Taches Filtrage[200];
-    printf("\n\tEntrez le choix de filtrage (FINIS, ENCOURS) : ");
+    printf("\n\tEntrez le choix de filtrage (COMPLETE, INCOMPLET) : ");
     scanf(" %[^\n]", Choix_Filtrage);
     for (int i = 0; i < Taille; i++)
     {
@@ -425,6 +431,23 @@ void Rechercher()
         printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", res + 1, Tableau_Taches[res].Nom_Tache, Tableau_Taches[res].Description_Tache, Tableau_Taches[res].date_Tache.jour, Tableau_Taches[res].date_Tache.mois, Tableau_Taches[res].date_Tache.annee, Tableau_Taches[res].date_Tache.heure, Tableau_Taches[res].Priorite_Tache, Tableau_Taches[res].Status_Tache);
     }
     Acceuil();
+}
+
+void Export_Fichier()
+{
+    FILE *fichier = NULL;
+    fichier = fopen("DataBase.txt", "w");
+    if (fichier == NULL)
+    {
+        printf("Le fichier n'existe pas !");
+    }
+    else
+    {
+        for (int i = 0; i < Taille; i++)
+        {
+            fprintf(fichier, "\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", i + 1, Tableau_Taches[i].Nom_Tache, Tableau_Taches[i].Description_Tache, Tableau_Taches[i].date_Tache.jour, Tableau_Taches[i].date_Tache.mois, Tableau_Taches[i].date_Tache.annee, Tableau_Taches[i].date_Tache.heure, Tableau_Taches[i].Priorite_Tache, Tableau_Taches[i].Status_Tache);
+        }
+    }
 }
 
 void main()

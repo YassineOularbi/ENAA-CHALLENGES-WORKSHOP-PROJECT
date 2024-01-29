@@ -40,7 +40,6 @@ struct Taches Tableau_Taches[200];
 
 int Chercher(char Nom_Chercher[100])
 {
-
     for (int i = 0; i < Taille; i++)
     {
         int resultCompare = strcmp(Tableau_Taches[i].Nom_Tache, Nom_Chercher);
@@ -51,18 +50,19 @@ int Chercher(char Nom_Chercher[100])
     }
     return -1;
 }
+
 void Welcome()
 {
     int Choix_Welcome;
-    
+
     printf("\n########################## - OneHand - ##########################\n");
     printf("#################### - Gestion des Taches - #####################\n");
     printf("\n Bienvenue dans l'application degestion de taches developpee excl\n");
-	printf(" usivement pour l'association OneHand par la startup DigitalGear.\n");
+    printf(" usivement pour l'association OneHand par la startup DigitalGear.\n");
     printf("\n Cette application console offre aux membres de l'association une\n");
-	printf(" plateforme robuste pour creer, modifier, supprimer et visualiser\n leurs taches liees a leurs missions.\n");
+    printf(" plateforme robuste pour creer, modifier, supprimer et visualiser\n leurs taches liees a leurs missions.\n");
     printf("\n Chaque tache est accompagnee d'informations cruciales telles que \n");
-	printf(" la description detaillee, la date d'echeance, la priorite...\n");
+    printf(" la description detaillee, la date d'echeance, la priorite...\n");
     printf("\n####################### - DigitalGear - #########################\n");
     printf("\n\tPour continuer, Appuyez sur -> 1\n");
     printf("\tPour Quitter, Appuyez sur -> 0\n");
@@ -76,7 +76,7 @@ void Welcome()
         break;
     case 0:
         printf("\n\tA bientot ! Vous avez quitte le programme.\n");
-    	printf("\n######################### - DigitalGear - #########################\n");
+        printf("\n######################### - DigitalGear - #########################\n");
         break;
     default:
         printf("\n\tVeuillez entrer un choix valide !\n");
@@ -87,9 +87,8 @@ void Welcome()
 
 void Acceuil()
 {
-
     int Choix_Acceuil;
-    
+
     printf("\n########################## - OneHand - ##########################\n");
     printf("#################### - Gestion des Taches - #####################\n");
     printf("                                  \n");
@@ -145,7 +144,6 @@ void Acceuil()
         printf("\n\tVeuillez entrer un choix valide !\n");
         Acceuil();
         break;
-    
     }
 }
 
@@ -158,12 +156,13 @@ void Ajouter()
         printf("\n\tVeuillez entrer la description de la tache : ");
         scanf(" %[^\n]s", Tableau_Taches[i].Description_Tache);
         printf("\n\tVeuillez entrer et l'heure la date d'echeance JJ/MM/AAAA - HH : ");
-        scanf("%d/%d/%d - %d", &Tableau_Taches[i].date_Tache.jour, 
-		&Tableau_Taches[i].date_Tache.mois, &Tableau_Taches[i].date_Tache.annee, 
-		&Tableau_Taches[i].date_Tache.heure);
-        while (Tableau_Taches[Taille].date_Tache.jour < 1 || Tableau_Taches[Taille].date_Tache.jour > 31 || Tableau_Taches[Taille].date_Tache.mois < 1 || Tableau_Taches[Taille].date_Tache.mois > 12 || Tableau_Taches[Taille].date_Tache.annee < 2024 || Tableau_Taches[Taille].date_Tache.annee > 2030 || Tableau_Taches[Taille].date_Tache.heure < 0 || Tableau_Taches[Taille].date_Tache.heure > 24 ){
-        printf("Veuillez Entrer une valide date  et l'heure sous forme (JJ / MM / YYYY - HH) : ");
-        scanf("%d / %d / %d - %d", &Tableau_Taches[Taille].date_Tache.jour, &Tableau_Taches[Taille].date_Tache.mois, &Tableau_Taches[Taille].date_Tache.annee, &Tableau_Taches[Taille].date_Tache.heure);
+        scanf("%d/%d/%d - %d", &Tableau_Taches[i].date_Tache.jour,
+              &Tableau_Taches[i].date_Tache.mois, &Tableau_Taches[i].date_Tache.annee,
+              &Tableau_Taches[i].date_Tache.heure);
+        while (Tableau_Taches[Taille].date_Tache.jour < 1 || Tableau_Taches[Taille].date_Tache.jour > 31 || Tableau_Taches[Taille].date_Tache.mois < 1 || Tableau_Taches[Taille].date_Tache.mois > 12 || Tableau_Taches[Taille].date_Tache.annee < 2024 || Tableau_Taches[Taille].date_Tache.annee > 2030 || Tableau_Taches[Taille].date_Tache.heure < 0 || Tableau_Taches[Taille].date_Tache.heure > 24)
+        {
+            printf("Veuillez Entrer une valide date  et l'heure sous forme (JJ / MM / AAAA - HH) : ");
+            scanf("%d / %d / %d - %d", &Tableau_Taches[Taille].date_Tache.jour, &Tableau_Taches[Taille].date_Tache.mois, &Tableau_Taches[Taille].date_Tache.annee, &Tableau_Taches[Taille].date_Tache.heure);
         }
         printf("\n\tVeuillez entrer la priorite de la tache (IMPORTANT, PEU IMPORTANT, PAS IMPORTANT) : ");
         scanf(" %[^\n]s", Tableau_Taches[i].Priorite_Tache);
@@ -193,12 +192,11 @@ void Supprimer()
         for (int i = res; i < Taille; i++)
         {
             Tableau_Taches[i] = Tableau_Taches[i + 1];
-            
         }
         Taille--;
-    printf("\n");
-    printf("\n\tL'operation de suppression est en cours d'execution...");
-    printf("\n\tLa tache a ete supprimee avec succes.\n");
+        printf("\n");
+        printf("\n\tL'operation de suppression est en cours d'execution...");
+        printf("\n\tLa tache a ete supprimee avec succes.\n");
     }
     Acceuil();
 }
@@ -221,18 +219,19 @@ void Modifier()
         scanf("  %[^\n]s", Tableau_Taches[res].Description_Tache);
         printf("\n\t   -La nouvelle date et l'heure d'echeance JJ/MM/AAAA - HH : ");
         scanf("%d / %d / %d - %d", &Tableau_Taches[res].date_Tache.jour, &Tableau_Taches[res].date_Tache.mois, &Tableau_Taches[res].date_Tache.annee, &Tableau_Taches[res].date_Tache.heure);
-         while (Tableau_Taches[res].date_Tache.jour < 1 || Tableau_Taches[res].date_Tache.jour > 31 || Tableau_Taches[res].date_Tache.mois < 1 || Tableau_Taches[res].date_Tache.mois > 12 || Tableau_Taches[res].date_Tache.annee < 2024 || Tableau_Taches[res].date_Tache.annee > 2030 || Tableau_Taches[res].date_Tache.heure < 0 || Tableau_Taches[res].date_Tache.heure > 24 ){
-        printf("Veuillez Entrer une valide date  et l'heure sous forme (JJ / MM / YYYY - HH) : ");
-        scanf("%d / %d / %d - %d", &Tableau_Taches[Taille].date_Tache.jour, &Tableau_Taches[Taille].date_Tache.mois, &Tableau_Taches[Taille].date_Tache.annee, &Tableau_Taches[Taille].date_Tache.heure);
+        while (Tableau_Taches[res].date_Tache.jour < 1 || Tableau_Taches[res].date_Tache.jour > 31 || Tableau_Taches[res].date_Tache.mois < 1 || Tableau_Taches[res].date_Tache.mois > 12 || Tableau_Taches[res].date_Tache.annee < 2024 || Tableau_Taches[res].date_Tache.annee > 2030 || Tableau_Taches[res].date_Tache.heure < 0 || Tableau_Taches[res].date_Tache.heure > 24)
+        {
+            printf("Veuillez Entrer une valide date  et l'heure sous forme (JJ / MM / AAAA - HH) : ");
+            scanf("%d / %d / %d - %d", &Tableau_Taches[Taille].date_Tache.jour, &Tableau_Taches[Taille].date_Tache.mois, &Tableau_Taches[Taille].date_Tache.annee, &Tableau_Taches[Taille].date_Tache.heure);
         }
         printf("\n\t   -La nouvelle priorite de la tache (IMPORTANT, PEU IMPORTANT, PAS IMPORTANT) : ");
         scanf(" %[^\n]s", Tableau_Taches[res].Priorite_Tache);
         printf("\n\t   -Le nouveau statut de la tache (FINIS, ENCOURS) : ");
         scanf(" %[^\n]s", Tableau_Taches[res].Status_Tache);
+        printf("\n");
+        printf("\n\tL'operation de modification est en cours d'execution...");
+        printf("\n\tLa tache a ete modifiee avec succes.\n");
     }
-    printf("\n");
-    printf("\n\tL'operation de modification est en cours d'execution...");
-    printf("\n\tLa tache a ete modifiee avec succes.\n");
     Acceuil();
 }
 
@@ -247,18 +246,15 @@ void Ordonner()
     switch (Choix_Triage)
     {
     case 1:
-       BubbleSort_Croissant();
+        BubbleSort_Croissant();
         break;
     case 2:
-       BubbleSort_Decroissant();
+        BubbleSort_Decroissant();
         break;
-    default :
-       printf("\n\tVeuillez entrer un choix valide !\n");
-       break;
+    default:
+        printf("\n\tVeuillez entrer un choix valide !\n");
+        break;
     }
-    printf("\n");
-    printf("\n\tL'operation de triage est en cours d'execution...");
-    printf("\n\tLa liste des taches a ete triee avec succes.\n");
     Acceuil();
 }
 
@@ -266,126 +262,172 @@ void Afficher()
 {
     for (int i = 0; i < Taille; i++)
     {
-        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", i+1, Tableau_Taches[i].Nom_Tache, Tableau_Taches[i].Description_Tache, Tableau_Taches[i].date_Tache.jour, Tableau_Taches[i].date_Tache.mois, Tableau_Taches[i].date_Tache.annee, Tableau_Taches[i].date_Tache.heure, Tableau_Taches[i].Priorite_Tache, Tableau_Taches[i].Status_Tache);
+        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", i + 1, Tableau_Taches[i].Nom_Tache, Tableau_Taches[i].Description_Tache, Tableau_Taches[i].date_Tache.jour, Tableau_Taches[i].date_Tache.mois, Tableau_Taches[i].date_Tache.annee, Tableau_Taches[i].date_Tache.heure, Tableau_Taches[i].Priorite_Tache, Tableau_Taches[i].Status_Tache);
     }
     Acceuil();
 }
 void BubbleSort_Croissant()
 {
     struct Taches Remplace;
- for (int i = 0; i < Taille; i++) {
-        for (int j = i+1; j < Taille; j++) {
-            if (Tableau_Taches[i].date_Tache.annee > Tableau_Taches[j].date_Tache.annee || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois > Tableau_Taches[j].date_Tache.mois) || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois == Tableau_Taches[j].date_Tache.mois && Tableau_Taches[i].date_Tache.jour > Tableau_Taches[j].date_Tache.jour) || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois == Tableau_Taches[j].date_Tache.mois && Tableau_Taches[i].date_Tache.jour == Tableau_Taches[j].date_Tache.jour && Tableau_Taches[i].date_Tache.heure > Tableau_Taches[j].date_Tache.heure)) 
-			{
+    for (int i = 0; i < Taille; i++)
+    {
+        for (int j = i + 1; j < Taille; j++)
+        {
+            if (Tableau_Taches[i].date_Tache.annee > Tableau_Taches[j].date_Tache.annee || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois > Tableau_Taches[j].date_Tache.mois) || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois == Tableau_Taches[j].date_Tache.mois && Tableau_Taches[i].date_Tache.jour > Tableau_Taches[j].date_Tache.jour) || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois == Tableau_Taches[j].date_Tache.mois && Tableau_Taches[i].date_Tache.jour == Tableau_Taches[j].date_Tache.jour && Tableau_Taches[i].date_Tache.heure > Tableau_Taches[j].date_Tache.heure))
+            {
                 Remplace = Tableau_Taches[i];
                 Tableau_Taches[i] = Tableau_Taches[j];
                 Tableau_Taches[j] = Remplace;
             }
         }
     }
+    printf("\n");
+    printf("\n\tL'operation de triage est en cours d'execution...");
+    printf("\n\tLa liste des taches a ete triee avec succes.\n");
     Acceuil();
 }
 
-void BubbleSort_Decroissant(){
+void BubbleSort_Decroissant()
+{
     struct Taches Remplace;
- for (int i = 0; i < Taille; i++) {
-        for (int j = i+1; j < Taille; j++) {
-            if (Tableau_Taches[i].date_Tache.annee < Tableau_Taches[j].date_Tache.annee || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois < Tableau_Taches[j].date_Tache.mois) || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois == Tableau_Taches[j].date_Tache.mois && Tableau_Taches[i].date_Tache.jour < Tableau_Taches[j].date_Tache.jour)) 
-			{    
+    for (int i = 0; i < Taille; i++)
+    {
+        for (int j = i + 1; j < Taille; j++)
+        {
+            if (Tableau_Taches[i].date_Tache.annee < Tableau_Taches[j].date_Tache.annee || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois < Tableau_Taches[j].date_Tache.mois) || (Tableau_Taches[i].date_Tache.annee == Tableau_Taches[j].date_Tache.annee && Tableau_Taches[i].date_Tache.mois == Tableau_Taches[j].date_Tache.mois && Tableau_Taches[i].date_Tache.jour < Tableau_Taches[j].date_Tache.jour))
+            {
                 Remplace = Tableau_Taches[i];
                 Tableau_Taches[i] = Tableau_Taches[j];
                 Tableau_Taches[j] = Remplace;
             }
         }
     }
+    printf("\n");
+    printf("\n\tL'operation de triage est en cours d'execution...");
+    printf("\n\tLa liste des taches a ete triee avec succes.\n");
     Acceuil();
 }
 
-void Filtrer(){
+void Filtrer()
+{
     int Choix_Filtrage;
     printf("\n\tVeuillez entrer l'option de filtrage : \n");
     printf("\n\tPour filtrer par priorite, Appuyez sur -> 1\n");
     printf("\tPour filtrer par statut, Appuyez sur -> 2\n");
     printf("\tEntrez : ");
     scanf("%d", &Choix_Filtrage);
-    switch(Choix_Filtrage){
-        case 1 :
+    switch (Choix_Filtrage)
+    {
+    case 1:
         Filtrage_Priorite();
         break;
-        case 2 :
+    case 2:
         Filtrage_Status();
         break;
-        default :
+    default:
         printf("\n\tVeuillez entrer un choix valide !\n");
-        Acceuil();
         break;
     }
-    
+    Acceuil();
 }
 
-void Filtrage_Priorite(){
+void Filtrage_Priorite()
+{
     int j = 0;
     char Choix_Filtrage[100];
     struct Taches Filtrage[200];
     printf("\n\tEntrez le choix de filtrage (IMPORTANT, PEU IMPORTANT, PAS IMPORTANT) : ");
     scanf(" %[^\n]", Choix_Filtrage);
-     for (int i = 0; i < Taille; i++)
+    for (int i = 0; i < Taille; i++)
     {
         int resultCompare = strcmp(Tableau_Taches[i].Priorite_Tache, Choix_Filtrage);
-        if (resultCompare == 0){
-            Filtrage[j]=Tableau_Taches[i];
+        if (resultCompare == 0)
+        {
+            Filtrage[j] = Tableau_Taches[i];
             j++;
         }
-
-}
+    }
     printf("\n");
     printf("\n\tL'operation de filtrage est en cours d'execution...");
     printf("\n\tLa liste des taches a ete filtree avec succes.\n");
-     for (int i = 0; i < j; i++){
-        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", Filtrage[i].Nom_Tache, Filtrage[i].Description_Tache, Filtrage[i].date_Tache.jour, Filtrage[i].date_Tache.mois, Filtrage[i].date_Tache.annee, Filtrage[i].date_Tache.heure, Filtrage[i].Priorite_Tache, Filtrage[i].Status_Tache);
-     }
+    for (int i = 0; i < j; i++)
+    {
+        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", i + 1, Filtrage[i].Nom_Tache, Filtrage[i].Description_Tache, Filtrage[i].date_Tache.jour, Filtrage[i].date_Tache.mois, Filtrage[i].date_Tache.annee, Filtrage[i].date_Tache.heure, Filtrage[i].Priorite_Tache, Filtrage[i].Status_Tache);
+    }
     Acceuil();
 }
 
-void Filtrage_Status(){
+void Filtrage_Status()
+{
     int j = 0;
     char Choix_Filtrage[100];
     struct Taches Filtrage[200];
     printf("\n\tEntrez le choix de filtrage (FINIS, ENCOURS) : ");
     scanf(" %[^\n]", Choix_Filtrage);
-    
-     for (int i = 0; i < Taille; i++){
+    for (int i = 0; i < Taille; i++)
+    {
         int resultCompare = strcmp(Tableau_Taches[i].Status_Tache, Choix_Filtrage);
-        if (resultCompare == 0){
-            Filtrage[j]=Tableau_Taches[i];
+        if (resultCompare == 0)
+        {
+            Filtrage[j] = Tableau_Taches[i];
             j++;
         }
-
-	}
+    }
     printf("\n");
     printf("\n\tL'operation de filtrage est en cours d'execution...");
     printf("\n\tLa liste des taches a ete filtree avec succes.\n");
-     for (int i = 0; i < j; i++){
-        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", Filtrage[i].Nom_Tache, Filtrage[i].Description_Tache, Filtrage[i].date_Tache.jour, Filtrage[i].date_Tache.mois, Filtrage[i].date_Tache.annee, Filtrage[i].date_Tache.heure, Filtrage[i].Priorite_Tache, Filtrage[i].Status_Tache);
-     }
-    Acceuil();
-}
-
-void Rechercher(){
-    
-    char Nom_Rechercher[100];
-    printf("\n\tEntrer le nom de la tache a rechercher : ");
-    scanf(" %[^\n]", Nom_Rechercher);
-    int res = Chercher(Nom_Rechercher);
-    if (res == -1){
-        printf("\n\tLa tache a rechercher n'existe pas !");
-    } else {
-        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n",res+1, Tableau_Taches[res].Nom_Tache, Tableau_Taches[res].Description_Tache, Tableau_Taches[res].date_Tache.jour, Tableau_Taches[res].date_Tache.mois, Tableau_Taches[res].date_Tache.annee, Tableau_Taches[res].date_Tache.heure, Tableau_Taches[res].Priorite_Tache, Tableau_Taches[res].Status_Tache);
+    for (int i = 0; i < j; i++)
+    {
+        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", i + 1, Filtrage[i].Nom_Tache, Filtrage[i].Description_Tache, Filtrage[i].date_Tache.jour, Filtrage[i].date_Tache.mois, Filtrage[i].date_Tache.annee, Filtrage[i].date_Tache.heure, Filtrage[i].Priorite_Tache, Filtrage[i].Status_Tache);
     }
     Acceuil();
 }
 
-int main()
+void Filtrage_DateEcheance()
+{
+    int i, j;
+    int Choix_Filtrage_Mois, Choix_Filtrage_Annee;
+    struct Taches Filtrage[200];
+    printf("Veuillez entrer l'annee de filtrage des taches :");
+    scanf("%d", &Choix_Filtrage_Annee);
+    printf("Veuillez entrer le mois de filtrage des taches :");
+    scanf("%d", &Choix_Filtrage_Mois);
+    for (i = 0; i < Taille; i++)
+    {
+        if (Tableau_Taches[i].date_Tache.annee == Choix_Filtrage_Annee && Tableau_Taches[i].date_Tache.mois == Choix_Filtrage_Mois)
+        {
+            Filtrage[j] = Tableau_Taches[i];
+            j++;
+        }
+    }
+    printf("\n");
+    printf("\n\tL'operation de filtrage est en cours d'execution...");
+    printf("\n\tLa liste des taches a ete filtree avec succes.\n");
+    for (i = 0; i < j; i++)
+    {
+        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", i + 1, Filtrage[i].Nom_Tache, Filtrage[i].Description_Tache, Filtrage[i].date_Tache.jour, Filtrage[i].date_Tache.mois, Filtrage[i].date_Tache.annee, Filtrage[i].date_Tache.heure, Filtrage[i].Priorite_Tache, Filtrage[i].Status_Tache);
+    }
+    Acceuil();
+}
+
+void Rechercher()
+{
+    char Nom_Rechercher[100];
+    printf("\n\tEntrer le nom de la tache a rechercher : ");
+    scanf(" %[^\n]", Nom_Rechercher);
+    int res = Chercher(Nom_Rechercher);
+    if (res == -1)
+    {
+        printf("\n\tLa tache a rechercher n'existe pas !");
+    }
+    else
+    {
+        printf("\n\t->Nom de la tache %d : %s\n \t  -Description : %s\n \t  -Date d'echeance : %d/%d/%d - %dh\n \t  -Priorite : %s\n \t  -Statut : %s.\n", res + 1, Tableau_Taches[res].Nom_Tache, Tableau_Taches[res].Description_Tache, Tableau_Taches[res].date_Tache.jour, Tableau_Taches[res].date_Tache.mois, Tableau_Taches[res].date_Tache.annee, Tableau_Taches[res].date_Tache.heure, Tableau_Taches[res].Priorite_Tache, Tableau_Taches[res].Status_Tache);
+    }
+    Acceuil();
+}
+
+void main()
 {
     Welcome();
 }

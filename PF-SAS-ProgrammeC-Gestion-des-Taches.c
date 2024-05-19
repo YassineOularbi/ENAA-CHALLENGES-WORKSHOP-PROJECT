@@ -404,7 +404,7 @@ void Filtrage_Status()
 
 void Filtrage_DateEcheance()
 {
-    int i, j;
+    int i, j = 0;
     int Choix_Filtrage_Mois, Choix_Filtrage_Annee;
     struct Taches Filtrage[200];
     printf("\nVeuillez entrer l'annee de filtrage des taches :");

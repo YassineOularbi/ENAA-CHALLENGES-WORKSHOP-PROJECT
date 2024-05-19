@@ -1,0 +1,30 @@
+Algorithme qui permet de calculer l'Air de rectangle
+Variables Lg, Lr, A
+début
+Ecrire ("Entrer la longueur du rectangle:")
+Lire Lg
+Ecrire ("Entrer la largeur du rectangle:3)
+Lire Lr
+A = Lg*Lr
+Ecrire ("L'Air de rectangle est :", A)
+fin
+*********************************************************
+Algorithme qui demande la température en C° et transfere en Fh
+Variable A, B
+début
+Ecrire ("Entrer la temperature en C° :")
+Lire A
+B = A*33,8
+Ecrire ("Température en Fahrenheit est :", B)
+fin
+*********************************************************
+Algorithme qui demande deux nombres et trouve leurs puissance
+Variables B, E, R
+début
+Ecrire ("Entrer la base :")
+Lire B
+Ecrire ("Entrer l'exposant :")
+Lire E
+R = B^E
+Ecrire ("la puissance est :" R)
+fin

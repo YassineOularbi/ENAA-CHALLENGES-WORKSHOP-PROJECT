@@ -1,0 +1,6 @@
+
+	->Nom de la tache 1 : T1
+ 	  -Description : D1
+ 	  -Date d'echeance : 12/1/2024 - 11h
+ 	  -Priorite : IMPORTANT
+ 	  -Statut : INCOMPLETE.
